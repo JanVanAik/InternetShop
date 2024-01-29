@@ -54,7 +54,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{% url "users:logout" %}">
                                 Выйти
                             </a>
                         </li>
@@ -78,7 +78,7 @@
         crossorigin="anonymous"></script>
 
 <!-- FontAwesome script -->
-<script src="{% static "vendor/fontawesome/fontawesome-icons.js" crossorigin="anonymous" %}"></script>
+<script src="{% static "vendor/fontawesome/fontawesome-icons.js"%} crossorigin="anonymous" %}"></script>
 
 </body>
 
