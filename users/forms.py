@@ -17,9 +17,9 @@ class UserLoginForm(AuthenticationForm):
 class UserRegistrationForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput
         (attrs={'class': 'form-control py-4', "placeholder": "Введите имя пользователя"}))
-    firstname = forms.CharField(widget=forms.TextInput
+    first_name = forms.CharField(widget=forms.TextInput
         (attrs={'class': 'form-control py-4', "placeholder": "Введите имя"}))
-    lastname = forms.CharField(widget=forms.TextInput
+    last_name = forms.CharField(widget=forms.TextInput
         (attrs={"class": 'form-control py-4', "placeholder": "Введите фамилию"}))
     email = forms.CharField(widget=forms.EmailInput
         (attrs={'class': 'form-control py-4', "placegolder": "Введите адрес эл. почты"}))
@@ -30,15 +30,15 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "firstname", "lastname", "email", "password1", "password2")
+        fields = ("username", "first_name", "last_name", "email", "password1", "password2")
 
 
 class UserProfileForm(UserChangeForm):
     username = forms.CharField(widget=forms.TextInput
     (attrs={'class': 'form-control py-4', "placeholder": "Введите имя пользователя", "readonly": True}),)
-    firstname = forms.CharField(widget=forms.TextInput
+    first_name = forms.CharField(widget=forms.TextInput
     (attrs={'class': 'form-control py-4', "placeholder": "Введите имя"}))
-    lastname = forms.CharField(widget=forms.TextInput
+    last_name = forms.CharField(widget=forms.TextInput
     (attrs={"class": 'form-control py-4', "placeholder": "Введите фамилию"}))
     email = forms.CharField(widget=forms.EmailInput
     (attrs={'class': 'form-control py-4', "placegolder": "Введите адрес эл. почты", "readonly": True}))
@@ -47,4 +47,4 @@ class UserProfileForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ("username", "firstname", "lastname", "email", "image ")
+        fields = ("username", "first_name", "last_name", "email", "image")
