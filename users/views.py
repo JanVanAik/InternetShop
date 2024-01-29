@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
+from basket.models import Basket
 from django.urls import reverse
 from django.contrib import auth, messages
 # Create your views here.
@@ -55,6 +56,7 @@ def profile(request):
         form = UserProfileForm(instance=request.user)
     context = {
         "title": "Профиль",
-        "form": form
+        "form": form,
+        "baskets": Basket.objects.all(),
     }
     return render(request, 'users/profile.html', context)
