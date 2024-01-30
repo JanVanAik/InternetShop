@@ -1,5 +1,5 @@
-from django.shortcuts import render, HttpResponseRedirect
-from django.urls import reverse
+from django.shortcuts import HttpResponseRedirect
+from django.contrib import messages
 
 from products.models import Product
 from basket.models import Basket
@@ -17,6 +17,7 @@ def basket_add(request, product_id):
         basket = baskets.first()
         basket.quantity +=1
         basket.save()
+        messages.success("Товар добавлен в корзину!")
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 

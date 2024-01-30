@@ -6,6 +6,10 @@
         Корзина <span class="badge badge-secondary badge-pill">{{ baskets.0.total_quantity }}</span>
     </h4>
     {% for basket in baskets %}
+{#        {% if  form.errors %}#}
+{#        <div class="alert alert-warning alert-dismissible fade show" role="alert"#}
+{#             style="margin-top: 50px;">#}
+{#        {{ form.errors}}#}
         <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title">{{ basket.Product.name }}</h5>
