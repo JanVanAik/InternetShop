@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
 
 from products.models import Product
@@ -8,10 +8,10 @@ from basket.models import Basket
 # Create your views here.
 def basket_add(request, product_id):
     user = request.user
-    product = Product.objects.filter(id=product_id)
-    baskets = Basket.objects.filter(user=user, product=product)
+    product = Product.objects.get(id=product_id)
+    baskets = Basket.objects.filter(User=user, Product=product)
     if not baskets:
-        Basket.objects.create(user=user, product=product, quantity=1)
+        Basket.objects.create(User=user, Product=product, quantity=1)
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
         basket = baskets.first()
@@ -22,6 +22,6 @@ def basket_add(request, product_id):
 
 
 def basket_remove(request, id):
-    basket = Basket.objects.filter(id=id)
+    basket = Basket.objects.get(id=id)
     basket.delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])

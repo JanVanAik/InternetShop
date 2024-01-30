@@ -77,8 +77,8 @@
                                 <p class="card-text">{{ product.desc }}</p>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="{% url "baskets:basket_add" product_id %}" class="btn btn-outline-success">
-
+                                <a href="{% url 'baskets:basket_add' product.id %}" class="btn btn-outline-success">
+                                    Отправить в корзину
                                 </a>
                             </div>
                         </div>
