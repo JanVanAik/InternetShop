@@ -5,6 +5,7 @@ from django.urls import reverse
 
 from users.models import User
 from admins.forms import UserAdminRegistrationForm
+from users.forms import UserProfileForm
 
 # Create your views here.
 def admin_index(request):
@@ -38,7 +39,15 @@ def admin_read(request):
 
 
 def admin_update(request):
+    if request.method == "POST":
+        form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse("admins:admins-read"))
+    else:
+        form = UserProfileForm(instance=request.user)
     context = {
-        'title': "GeekShop-UPDATE"
+        'title': "GeekShop-UPDATE",
+        "form": form
     }
     return render(request, 'admins/admin-users-update-delete.html', context)
