@@ -1,11 +1,13 @@
 from django.shortcuts import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from products.models import Product
 from basket.models import Basket
 
 
-# Create your views here.
+# Create your views here
+@login_required
 def basket_add(request, product_id):
     user = request.user
     product = Product.objects.get(id=product_id)
@@ -22,6 +24,7 @@ def basket_add(request, product_id):
 
 
 
+@login_required
 def basket_remove(request, id):
     basket = Basket.objects.get(id=id)
     basket.delete()
