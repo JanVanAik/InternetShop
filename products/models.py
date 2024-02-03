@@ -7,6 +7,9 @@ class ProductCategory(models.Model):
     name = models.CharField(max_length=50, unique=True)
     desc = models.TextField(blank=True, null=True)
 
+    def __str__(self):
+        return f'{self.name}'
+
 
 class Product(models.Model):
     name = models.CharField(max_length=200, unique=True)
