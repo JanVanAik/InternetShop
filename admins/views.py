@@ -1,11 +1,35 @@
-from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import user_passes_test
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from users.models import User
 from admins.forms import UserAdminRegistrationForm, UserAdminProfileForm
+
+
+class UserListView(ListView):
+    model = User
+    template_name = 'admins/admin-users-read.html'
+
+
+class UserUpdateView(UpdateView):
+    model = User
+    form_class = UserAdminProfileForm
+    template_name = 'admins/admin-users-update-delete.html'
+
+
+class UserCreateView(CreateView):
+    model = User
+    form_class = UserAdminRegistrationForm
+    template_name = 'admins/admin-users-create.html'
+    success_url = reverse_lazy("admins:admins-read")
+
+
+class UserDeleteView(DeleteView):
+    model = User
+    template_name = 'admins/admin-users-read.html'
 
 
 # Create your views here.
