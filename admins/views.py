@@ -2,18 +2,22 @@ from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.contrib.auth.decorators import user_passes_test
 
 from users.models import User
 from admins.forms import UserAdminRegistrationForm, UserAdminProfileForm
-from users.forms import UserProfileForm
+
 
 # Create your views here.
+@user_passes_test(lambda u: u.is_staff)
 def admin_index(request):
     context = {
         'title': "GeekShop-ADMIN PANEL"
     }
     return render(request, 'admins/admin-index.html', context)
 
+
+@user_passes_test(lambda u: u.is_staff)
 def admin_create(request):
     if request.method == "POST":
         form = UserAdminRegistrationForm(data=request.POST, files=request.FILES)
@@ -29,6 +33,7 @@ def admin_create(request):
     return render(request, 'admins/admin-users-create.html', context)
 
 
+@user_passes_test(lambda u: u.is_staff)
 def admin_read(request):
     users = User.objects.all()
     context = {
@@ -38,6 +43,7 @@ def admin_read(request):
     return render(request, 'admins/admin-users-read.html', context)
 
 
+@user_passes_test(lambda u: u.is_staff)
 def admin_update(request, pk):
     selected_user = User.objects.get(id=pk)
     if request.method == "POST":
