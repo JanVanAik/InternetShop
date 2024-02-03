@@ -10,7 +10,7 @@ class Basket(models.Model):
     created_timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Корзина для {self.user.username}| Продукт {self.product.name}"
+        return f"Корзина для {self.User.username}| Продукт {self.Product.name}"
 
     def sum(self):
         return self.quantity * self.Product.price
