@@ -3,9 +3,9 @@
 {% block content %}
     <main>
         <div class="container-fluid">
-            <h1 class="mt-4">Редактирование пользователя | valeriy</h1>
+            <h1 class="mt-4">Редактирование пользователя | {{ selected_user.username }}</h1>
             <div class="card-body">
-                <form method="POST" action="{% url 'admins:admins-update' %}" enctype='multipart/form-data'>
+                <form method="POST" action="{% url 'admins:admins-update' selected_user.id %}" enctype='multipart/form-data'>
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="col-lg-6">

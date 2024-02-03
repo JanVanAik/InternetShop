@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from users.models import User
-from admins.forms import UserAdminRegistrationForm
+from admins.forms import UserAdminRegistrationForm, UserAdminProfileForm
 from users.forms import UserProfileForm
 
 # Create your views here.
@@ -38,16 +38,18 @@ def admin_read(request):
     return render(request, 'admins/admin-users-read.html', context)
 
 
-def admin_update(request):
+def admin_update(request, pk):
+    selected_user = User.objects.get(id=pk)
     if request.method == "POST":
-        form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
+        form = UserAdminProfileForm(instance=selected_user, data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse("admins:admins-read"))
     else:
-        form = UserProfileForm(instance=request.user)
+        form = UserAdminProfileForm(instance=selected_user)
     context = {
         'title': "GeekShop-UPDATE",
-        "form": form
+        "form": form,
+        "selected_user": selected_user
     }
     return render(request, 'admins/admin-users-update-delete.html', context)

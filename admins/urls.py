@@ -7,5 +7,5 @@ urlpatterns = [
     path('', admin_index, name='index'),
     path('admin-users-create/', admin_create, name='admins-create'),
     path('admin-users-read/', admin_read, name='admins-read'),
-    path('admin-users-update/', admin_update, name='admins-update')
+    path('admin-users-update/<int:pk>/', admin_update, name='admins-update')
 ]
