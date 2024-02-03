@@ -56,13 +56,16 @@ class UserAdminCreateView(CommonMixin, SuccessMessageMixin, CreateView):
 
 class UserAdminDeleteView(DispatchMixin, DeleteView):
     model = User
-    template_name = 'admins/admin-users-read.html'
+    template_name = 'admins/admin-users-update-delete.html'
     success_url = reverse_lazy('admins:admins-read')
 
-    def delete(self, request, *args, **kwargs):
+
+    def form_valid(self, form):
         self.object = self.get_object()
         self.object.safe_delete()
         return HttpResponseRedirect(self.success_url)
+
+
 
 #
 # Create your views here.

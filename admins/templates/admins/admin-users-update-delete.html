@@ -49,9 +49,10 @@
                 </form>
                 <div class="row">
                     <div class="col-lg-12" style="margin-top: 33px;">
-                        <a href="{% url "admins:admins-delete" object.id %} " class="btn btn-danger btn-block">
-                            Удалить
-                        </a>
+                        <form action="{% url "admins:admins-delete" user.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-danger btn-block" value="Delete">
+                        </form>
                     </div>
                 </div>
             </div>
