@@ -53,3 +53,9 @@ def admin_update(request, pk):
         "selected_user": selected_user
     }
     return render(request, 'admins/admin-users-update-delete.html', context)
+
+
+def admin_delete(request, pk):
+    selected_user = User.objects.get(id=pk)
+    selected_user.delete()
+    return HttpResponseRedirect(reverse('admins:admins-read'))
