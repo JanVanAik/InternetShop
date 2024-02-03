@@ -3,6 +3,17 @@
 
 {% block content %}
     <main>
+        {% if messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert"
+                 style="margin-top: 50px;">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">*</span>
+            </button>
+        {% endif %}
         <div class="container-fluid">
             <h1 class="mt-4">Пользователи</h1>
             <div class="card mb-4">
@@ -37,7 +48,8 @@
                             {% for user in users %}
 
                                 <tr>
-                                    <td><a href="{% url "admins:admins-update" user.id %}" style="color: dodgerblue">{{user.username }}</a></td>
+                                    <td><a href="{% url "admins:admins-update" user.id %}"
+                                           style="color: dodgerblue">{{ user.username }}</a></td>
                                     <td>{{ user.first_name }}</td>
                                     <td>{{ user.last_name }}</td>
                                     <td>{{ user.email }}</td>
