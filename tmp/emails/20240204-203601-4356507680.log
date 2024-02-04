@@ -1,0 +1,12 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0JDQmtCi0JjQktCQ0KbQmNCvINCf0J7Qm9Cs0JfQntCS0JDQotCV0JvQrw==?=
+From: django@mail.ru
+To: yumi@mail.com
+Date: Sun, 04 Feb 2024 20:36:01 -0000
+Message-ID: <170707896120.9151.15753621897910228840@MacBook-Pro-Future.local>
+
+Активируйте пользователя Yumi пройдя по ссылке http://localhost:8000/users/verify/yumi@mail.com/cd3ae6d374f6e52250f880de004810a1e12aac68
+-------------------------------------------------------------------------------

@@ -1,0 +1,10 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if user %}\
+        <h3>Поздравляем! Вы прошли верификацию! Пользователь {{ user.username }}</h3>
+    {% else %}
+        <h3> Верификация не пройдена </h3>
+    {% endif %}
+{% endblock %}
