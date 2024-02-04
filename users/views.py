@@ -31,8 +31,10 @@ def users(request):
 def register(request):
 
     def send_verify_link(user):
-        verify_link = reverse('users:verification', args=[user.email, user.activation.key])
-        return send_mail(verify_link, settings.EMAIL_HOST_USER, [user.email, ], fail_silently=False)
+        verify_link = reverse('users:verification', args=[user.email, user.activation_key])
+        subject = 'АКТИВАЦИЯ ПОЛЬЗОВАТЕЛЯ'
+        message = f'Активируйте пользователя {user.username} пройдя по ссылке {settings.DOMAIN_NAME}{verify_link}'
+        return send_mail(subject, message, settings.EMAIL_HOST_USER, fail_silently=False, recipient_list=[user.email])
 
 
     if request.method == "POST":
@@ -40,7 +42,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             send_verify_link(user)
-            messages.success(request, "GzGz!!")
+            messages.success(request, "Проверяй почту, братишка")
             return HttpResponseRedirect(reverse("users:user"))
         else:
             print(form.errors)
