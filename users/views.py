@@ -77,15 +77,19 @@ def profile(request):
 
 def verify(request, email, activate_key):
     try:
-        user = User.objects.filter(email=email)
-        if user and user.activation_key == activate_key and not user.activation_key_expires:
+        user = User.objects.get(email=email)
+        if not user.is_activation_key_expired():
+            print('its ok')
+        else:
+            print('something wrong')
+        if user and user.activation_key == activate_key and (not user.is_activation_key_expires()):
             user.activation_key = ''
             user.activation_key_expires = None
             user.is_active = True
-            user.save(update_fields=['acrtivation_key', 'activation_key_expires', 'is_active'])
+            user.save(update_fields=['activation_key', 'activation_key_expires', 'is_active'])
             auth.login(request, user)
-            return render(request, 'user/verification.html')
+            return render(request, 'users/verification.html')
     except Exception as e:
         pass
     else:
-        return render(request, 'user/verification.html')
+        return render(request, 'users/verification.html')

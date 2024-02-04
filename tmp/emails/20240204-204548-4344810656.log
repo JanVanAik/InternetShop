@@ -1,0 +1,12 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0JDQmtCi0JjQktCQ0KbQmNCvINCf0J7Qm9Cs0JfQntCS0JDQotCV0JvQrw==?=
+From: django@mail.ru
+To: bob@bob.bob
+Date: Sun, 04 Feb 2024 20:45:48 -0000
+Message-ID: <170707954872.14888.8655884425115112440@MacBook-Pro-Future.local>
+
+Активируйте пользователя BOBSON пройдя по ссылке http://localhost:8000/users/verify/bob@bob.bob/34e56326054b2c65af94412651bdb9f93108f769
+-------------------------------------------------------------------------------

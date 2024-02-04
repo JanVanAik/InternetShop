@@ -11,7 +11,7 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
 
 
-    path('verify/<str:email>/<str:activation_key>', verify, name='verification'),
+    path('verify/<str:email>/<str:activate_key>', verify, name='verification'),
 
 
 ]
