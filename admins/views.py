@@ -26,7 +26,7 @@ class TitleMixin:
         context['title'] = self.title
         return context
 
-class CommonMixin( DispatchMixin, TitleMixin):
+class CommonMixin(DispatchMixin, TitleMixin):
     pass
 
 
