@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'basket',
     'admins',
 
-    'social_django',
+    # 'social_django',
 
     'django.contrib.sites',
     'allauth',
@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'InternetShop.urls'
@@ -164,8 +165,7 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'social_core.backends.vk.VKOAuth2',
-    'social_core.backends.google.GooglePlusAuth',
+    # 'social_core.backends.vk.VKOAuth2',
     'allauth.account.auth_backends.AuthenticationBackend'
 )
 
