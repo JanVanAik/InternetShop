@@ -34,7 +34,13 @@ INSTALLED_APPS = [
     'basket',
     'admins',
 
-    'social_django',
+    # 'social_django',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',  # all for google auth
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'InternetShop.urls'
@@ -151,7 +158,25 @@ SOCIAL_AUTH_VK_OAUTH2_API_VERISON = '5.81'
 SOCIAL_AUTH_VK_OAUTH2_IGNORE_DEFAULT_SCOPE = True
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email', 'age']
 
+SOCIAL_AUTH_GOOGLE_OAUTH_KEY = ''
+SOCIAL_AUTH_GOOGLE_OAUTH_SECRET = ''
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'social_core.backends.vk.VKOAuth2',
+    # 'social_core.backends.vk.VKOAuth2',
+    'allauth.account.auth_backends.AuthenticationBackend'
 )
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
