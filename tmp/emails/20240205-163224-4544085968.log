@@ -1,0 +1,12 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0JDQmtCi0JjQktCQ0KbQmNCvINCf0J7Qm9Cs0JfQntCS0JDQotCV0JvQrw==?=
+From: django@mail.ru
+To: John@mail.ru
+Date: Mon, 05 Feb 2024 16:32:24 -0000
+Message-ID: <170715074406.67809.13138718106056802898@MacBook-Pro-Future.local>
+
+Активируйте пользователя Johnny пройдя по ссылке http://localhost:8000/users/verify/John@mail.ru/f3b625eccdfd93df9264c19a1773a3dd747c31fb
+-------------------------------------------------------------------------------
