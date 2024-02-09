@@ -10,9 +10,10 @@ from django.urls import reverse, reverse_lazy
 from django.contrib import auth, messages
 
 
-# Create your views here.
+# Classes
 
 
+# Adding title context
 class TitleMixin:
     title = None
 
@@ -23,6 +24,7 @@ class TitleMixin:
         return context
 
 
+# Class for user login
 class UserLoginForm(TitleMixin, LoginView):
     redirect_authenticated_user = True
     template_name = 'users/login.html'
@@ -34,6 +36,7 @@ class UserLoginForm(TitleMixin, LoginView):
         return self.render_to_response(self.get_context_data(form=form))
 
 
+# Class for user Creation
 class UserRegistrationForm(TitleMixin, CreateView):
     title = 'Регистрация пользователя'
     model = User
@@ -59,6 +62,7 @@ class UserRegistrationForm(TitleMixin, CreateView):
             return super().get(request, *args, **kwargs)
 
 
+# Class to generate user profile information, will be reworked
 class UserProfileForm(TitleMixin, UpdateView):
     model = User
     form_class = UserProfileForm
@@ -66,11 +70,16 @@ class UserProfileForm(TitleMixin, UpdateView):
     template_name = 'users/profile.html'
 
 
+# Functions
+
+
+# Logout function, no need to CBV
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse("index"))
 
 
+# Function for user verification from email
 def verify(request, email, activate_key):
     try:
         user = User.objects.get(email=email)
