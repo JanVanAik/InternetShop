@@ -5,10 +5,11 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import CreateView, UpdateView
 
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
-from basket.models import Basket
 from users.models import User
 from django.urls import reverse, reverse_lazy
 from django.contrib import auth, messages
+
+
 # Create your views here.
 
 
@@ -28,13 +29,9 @@ class UserLoginForm(TitleMixin, LoginView):
     form_class = UserLoginForm
     title = 'Авторизация пользователя'
 
-
-
     def form_invalid(self, form):
         messages.error(self.request, 'Invalid username or password')
         return self.render_to_response(self.get_context_data(form=form))
-
-
 
 
 class UserRegistrationForm(TitleMixin, CreateView):
@@ -62,7 +59,6 @@ class UserRegistrationForm(TitleMixin, CreateView):
             return super().get(request, *args, **kwargs)
 
 
-
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse("index"))
@@ -73,23 +69,6 @@ class UserProfileForm(TitleMixin, UpdateView):
     form_class = UserProfileForm
     title = 'Профиль пользователя'
     template_name = 'users/profile.html'
-
-#
-# def profile(request):
-#     if request.method == "POST":
-#         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return HttpResponseRedirect(reverse("users:profile"))
-#     else:
-#         form = UserProfileForm(instance=request.user)
-#     context = {
-#         "title": "Профиль",
-#         "form": form,
-#         "baskets": Basket.objects.filter(User=request.user),
-#     }
-#     return render(request, 'users/profile.html', context)
-
 
 
 def verify(request, email, activate_key):

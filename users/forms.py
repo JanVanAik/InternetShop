@@ -44,7 +44,6 @@ class UserRegistrationForm(UserCreationForm):
         return user
 
 
-
 class UserProfileForm(UserChangeForm):
     username = forms.CharField(widget=forms.TextInput
     (attrs={'class': 'form-control py-4', "placeholder": "Введите имя пользователя", "readonly": True}), )
