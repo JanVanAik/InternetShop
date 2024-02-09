@@ -59,16 +59,16 @@ class UserRegistrationForm(TitleMixin, CreateView):
             return super().get(request, *args, **kwargs)
 
 
-def logout(request):
-    auth.logout(request)
-    return HttpResponseRedirect(reverse("index"))
-
-
 class UserProfileForm(TitleMixin, UpdateView):
     model = User
     form_class = UserProfileForm
     title = 'Профиль пользователя'
     template_name = 'users/profile.html'
+
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect(reverse("index"))
 
 
 def verify(request, email, activate_key):
