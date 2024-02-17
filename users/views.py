@@ -5,7 +5,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import CreateView, UpdateView
 
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
-from users.models import User
+from users.models import User, UserProfile
 from django.urls import reverse, reverse_lazy
 from django.contrib import auth, messages
 
@@ -63,9 +63,17 @@ class UserRegistrationForm(TitleMixin, CreateView):
 
 
 # Class to generate user profile information, will be reworked
+# class UserProfileForm(TitleMixin, UpdateView):
+#     model = User
+#     form_class = UserProfileForm
+#     title = 'Профиль пользователя'
+#     template_name = 'users/profile.html'
+
+
 class UserProfileForm(TitleMixin, UpdateView):
     model = User
-    form_class = UserProfileForm
+    edit_form = UserProfileForm
+    profile_form = UserProfile
     title = 'Профиль пользователя'
     template_name = 'users/profile.html'
 
